@@ -31,8 +31,10 @@ pipeline {
 
         stage( "SonarQube Analysis" ){
             steps{
-                withSonarQubeEnv(credentialsId: 'jenkins-sonarqube-token'){
+                script {
+                    withSonarQubeEnv(credentialsId: 'jenkins-sonarqube-token'){
                     sh "mvn sonar:sonar"
+                    }
                 }
             }
         }
